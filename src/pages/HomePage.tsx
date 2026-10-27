@@ -12,6 +12,7 @@ import { CATEGORIES } from '../data/categories';
 import { PromptRecord } from '../types/prompt';
 import { useToast } from '../components/common/Toast';
 import { recordEvent } from '../utils/analytics';
+import { getAssetUrl } from '../config/siteConfig';
 
 export const HomePage: React.FC = () => {
   const [heroSearch, setHeroSearch] = useState('');
@@ -135,7 +136,7 @@ export const HomePage: React.FC = () => {
                     {/* Hero Image */}
                     <div className="relative aspect-[4/3] w-full group overflow-hidden">
                       <img
-                        src={heroPrompt.image}
+                        src={getAssetUrl(heroPrompt.image)}
                         alt={heroPrompt.alt}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />

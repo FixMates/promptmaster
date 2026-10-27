@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { PromptRecord } from '../../types/prompt';
+import { getAssetUrl } from '../../config/siteConfig';
 import {
   Search,
   SlidersHorizontal,
@@ -229,7 +230,7 @@ export const PromptTable: React.FC<PromptTableProps> = ({
                       <td className="p-3">
                         <div className="w-10 h-10 rounded-lg overflow-hidden bg-black shrink-0 border border-obsidian-800">
                           <img
-                            src={p.thumbnail || p.image}
+                            src={getAssetUrl(p.thumbnail || p.image)}
                             alt=""
                             className="w-full h-full object-cover"
                           />

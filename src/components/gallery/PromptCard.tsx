@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { PromptRecord } from '../../types/prompt';
 import { useToast } from '../common/Toast';
 import { recordEvent } from '../../utils/analytics';
-import { getShareUrl } from '../../config/siteConfig';
+import { getAssetUrl, getShareUrl } from '../../config/siteConfig';
 
 interface PromptCardProps {
   prompt: PromptRecord;
@@ -56,7 +56,7 @@ export const PromptCard: React.FC<PromptCardProps> = ({ prompt, onOpenLightbox }
     e.preventDefault();
     e.stopPropagation();
 
-    const shareUrl = getShareUrl(`/p/${prompt.id}`);
+    const shareUrl = getShareUrl(`/p/${prompt.id}/`);
 
     if (navigator.share) {
       try {
@@ -95,7 +95,7 @@ export const PromptCard: React.FC<PromptCardProps> = ({ prompt, onOpenLightbox }
             </div>
           ) : (
             <img
-              src={prompt.thumbnail || prompt.image}
+              src={getAssetUrl(prompt.thumbnail || prompt.image)}
               alt={prompt.alt || prompt.title}
               loading="lazy"
               onError={() => setImageError(true)}

@@ -25,7 +25,7 @@ The Featured Masterpieces section is a swipeable carousel. The Admin Studio live
 - **Icons & Effects:** Lucide React, Canvas Confetti
 - **Testing:** Vitest, Testing Library (React & DOM), JSDOM (26 Automated Tests Passing)
 - **Monetization:** Adsterra Advertising Engine (Native Banners, Display Banners, Social Bar, Popunder safety guard)
-- **Target Hosting:** Cloudflare Pages (Free-tier static delivery with `_redirects` SPA fallback)
+- **Hosting:** GitHub Pages at `https://fixmates.github.io/promptmaster/`
 
 ---
 
@@ -53,7 +53,7 @@ npm run build
 # -> Generates optimized bundle in dist/
 # -> Automatically builds dist/sitemap.xml
 # -> Pre-renders static HTML route shells in dist/p/*/index.html
-# -> Copies Cloudflare Pages _redirects
+# -> Generates ID-specific SEO pages and GitHub Pages 404 fallback
 
 # 5. Preview production build locally
 npm run preview
@@ -66,7 +66,7 @@ npm run preview
 ```
 prompt-web/
 ├── public/
-│   ├── _redirects                  # Cloudflare Pages SPA rewrite rule
+│   ├── _redirects                  # Cloudflare Pages fallback (optional)
 │   ├── robots.txt                  # Search crawler directives + sitemap pointer
 │   ├── logo-icon.svg               # SVG brand aperture icon
 │   └── images/                     # Optimized artwork (01.jpg - 08.jpg)
@@ -186,18 +186,9 @@ The platform tracks genuine interaction metrics:
 
 ---
 
-## 🚢 Cloudflare Pages Deployment Steps
+## 🚀 GitHub Pages Deployment
 
-1. Push this repository to **GitHub**.
-2. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/) and navigate to **Workers & Pages**.
-3. Click **Create Application** -> **Pages** -> **Connect to Git**.
-4. Select your `prompt-web` repository.
-5. In **Build Settings**, configure:
-   - **Framework preset:** `None` or `Vite`
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-6. Click **Save and Deploy**.
-7. Cloudflare Pages will build the site, generate the static route shells, configure the `_redirects` SPA rule, and deploy to a free `*.pages.dev` subdomain.
+The `.github/workflows/deploy-pages.yml` workflow installs dependencies, runs the test suite, builds the site with the `/promptmaster/` base path, and deploys `dist/` to GitHub Pages whenever `main` changes. The build also creates static metadata pages for each prompt and a `404.html` fallback for client routes. After the workflow succeeds, the site is available at [https://fixmates.github.io/promptmaster/](https://fixmates.github.io/promptmaster/).
 
 ---
 

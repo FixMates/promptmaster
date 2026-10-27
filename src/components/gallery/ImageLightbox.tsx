@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { X, Download, Copy, ExternalLink, Sparkles } from 'lucide-react';
 import { PromptRecord } from '../../types/prompt';
+import { getAssetUrl } from '../../config/siteConfig';
 import { useToast } from '../common/Toast';
 import { Link } from 'react-router-dom';
 
@@ -97,7 +98,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({ prompt, onClose })
         {/* Image Display */}
         <div className="relative flex-grow flex items-center justify-center bg-obsidian-950 p-2 sm:p-6 overflow-hidden min-h-[300px]">
           <img
-            src={prompt.image}
+            src={getAssetUrl(prompt.image)}
             alt={prompt.alt || prompt.title}
             className="max-h-[65vh] w-auto max-w-full object-contain rounded-xl shadow-lg"
           />

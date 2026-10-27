@@ -27,7 +27,7 @@ import { getPromptById, getPublishedPrompts } from '../utils/storage';
 import { PromptRecord } from '../types/prompt';
 import { useToast } from '../components/common/Toast';
 import { recordEvent } from '../utils/analytics';
-import { getPromptUrl, siteConfig } from '../config/siteConfig';
+import { getAssetUrl, getPromptUrl, siteConfig } from '../config/siteConfig';
 
 export const PromptDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -118,7 +118,7 @@ export const PromptDetailPage: React.FC = () => {
 
   const handleDownload = () => {
     const a = document.createElement('a');
-    a.href = prompt.image;
+    a.href = getAssetUrl(prompt.image);
     a.download = `prompt-master-${prompt.id}-${prompt.slug}.jpg`;
     document.body.appendChild(a);
     a.click();
@@ -218,7 +218,7 @@ export const PromptDetailPage: React.FC = () => {
             <div className="relative rounded-3xl bg-obsidian-900 border border-obsidian-800 p-2 overflow-hidden shadow-2xl group">
               <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-obsidian-950">
                 <img
-                  src={prompt.image}
+                  src={getAssetUrl(prompt.image)}
                   alt={prompt.alt || prompt.title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out cursor-pointer"
                   onClick={() => setLightboxOpen(true)}

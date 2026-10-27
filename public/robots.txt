@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /admin
+Disallow: /promptmaster/admin
 
-Sitemap: https://promptmastergallery.pages.dev/sitemap.xml
+Sitemap: https://fixmates.github.io/promptmaster/sitemap.xml

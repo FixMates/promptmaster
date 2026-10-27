@@ -4,6 +4,7 @@ import { formatPromptId, generateSlug, getNextPromptId, validatePromptId } from 
 import { CATEGORIES } from '../../data/categories';
 import { X, Upload, Sparkles, Image as ImageIcon, Check, AlertCircle, Eye } from 'lucide-react';
 import { useToast } from '../common/Toast';
+import { getAssetUrl } from '../../config/siteConfig';
 
 interface PromptEditorModalProps {
   isOpen: boolean;
@@ -411,7 +412,7 @@ export const PromptEditorModal: React.FC<PromptEditorModalProps> = ({
                   {imageFilePreview ? (
                     <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-black mb-2">
                       <img
-                        src={imageFilePreview}
+                        src={getAssetUrl(imageFilePreview)}
                         alt="Preview"
                         className="w-full h-full object-cover"
                       />
