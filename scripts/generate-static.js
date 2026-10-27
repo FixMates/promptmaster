@@ -72,7 +72,7 @@ categories.forEach(cat => {
 prompts.filter(p => p.status === 'published').forEach(p => {
   const modDate = p.updatedAt ? p.updatedAt.slice(0, 10) : today;
   sitemap += `  <url>
-    <loc>${defaultOrigin}/p/${p.id}</loc>
+    <loc>${defaultOrigin}/p/${p.id}/</loc>
     <lastmod>${modDate}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -98,8 +98,12 @@ if (fs.existsSync(indexHtmlPath)) {
     const cleanTitle = p.title.replace(/"/g, '&quot;');
     const title = `${cleanTitle} Prompt #${p.id} | Prompt Master Gallery`;
     const desc = `Explore the AI-generated ${p.category} artwork titled &quot;${cleanTitle}&quot; and copy its complete generation prompt.`;
-    const canonical = `${defaultOrigin}/p/${p.id}`;
-    const img = `${defaultOrigin}${p.image}`;
+    const canonical = `${defaultOrigin}/p/${p.id}/`;
+    const img = p.image.startsWith('http')
+      ? p.image
+      : p.image.startsWith('data:')
+        ? `${defaultOrigin}/images/og-cover.jpg`
+        : new URL(p.image, defaultOrigin).href;
 
     let preRendered = indexHtml
       .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
@@ -107,7 +111,10 @@ if (fs.existsSync(indexHtmlPath)) {
       .replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${title}" />`)
       .replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${desc}" />`)
       .replace(/<meta property="og:image" content=".*?" \/>/, `<meta property="og:image" content="${img}" />`)
-      .replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${canonical}" />`);
+      .replace(/<meta property="og:url" content=".*?" \/>/, `<meta property="og:url" content="${canonical}" />`)
+      .replace(/<meta name="twitter:title" content=".*?" \/>/, `<meta name="twitter:title" content="${title}" />`)
+      .replace(/<meta name="twitter:description" content=".*?" \/>/, `<meta name="twitter:description" content="${desc}" />`)
+      .replace(/<meta name="twitter:image" content=".*?" \/>/, `<meta name="twitter:image" content="${img}" />`);
 
     fs.writeFileSync(path.join(promptDir, 'index.html'), preRendered, 'utf-8');
   });

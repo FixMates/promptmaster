@@ -161,7 +161,7 @@ export const PromptDetailPage: React.FC = () => {
       <SEOHead
         title={`${prompt.title} Prompt #${prompt.id}`}
         description={`Explore the AI-generated ${prompt.category} artwork titled "${prompt.title}" and copy its complete generation prompt.`}
-        path={`/p/${prompt.id}`}
+        path={`/p/${prompt.id}/`}
         image={prompt.image}
         type="article"
       />

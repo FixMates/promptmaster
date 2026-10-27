@@ -23,6 +23,7 @@ describe('Social Publishing Pack Generator', () => {
   it('generates permanent URL matching prompt ID', () => {
     const pack = generateSocialPack(mockPrompt);
     expect(pack.promptUrl).toContain('/p/01');
+    expect(pack.promptUrl).toMatch(/\/p\/01\/$/);
     expect(pack.promptId).toBe('01');
   });
 

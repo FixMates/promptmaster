@@ -22,7 +22,7 @@ export function getSiteOrigin(): string {
 
 export function getPromptUrl(id: string): string {
   const origin = getSiteOrigin();
-  return `${origin}/p/${id}`;
+  return `${origin}/p/${id}/`;
 }
 
 export function getShareUrl(path: string): string {

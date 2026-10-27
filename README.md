@@ -117,9 +117,9 @@ prompt-web/
 ## 🏷️ Unique Permanent Prompt URLs (`/p/:id`)
 
 Every published prompt receives a permanent identifier:
-- `https://YOUR-DOMAIN/p/01`
-- `https://YOUR-DOMAIN/p/02`
-- `https://YOUR-DOMAIN/p/03`
+- `https://YOUR-DOMAIN/p/01/`
+- `https://YOUR-DOMAIN/p/02/`
+- `https://YOUR-DOMAIN/p/03/`
 
 ### ID Assignment Rules
 1. **Two-Digit Minimum Formatting:** Small numbers are formatted as `01`, `02`, ... `10`, `100`.
@@ -134,7 +134,7 @@ Every published prompt receives a permanent identifier:
 
 For every prompt, the Admin Dashboard can generate a complete social media publishing package:
 
-1. **Permanent URL:** Direct share link (e.g. `https://YOUR-DOMAIN/p/01`). Every prompt has a unique, ID-based page URL; use the matching link in that prompt's Reel or promotion.
+1. **Permanent URL:** Direct share link (e.g. `https://YOUR-DOMAIN/p/01/`). Every prompt has a unique, ID-based page URL; use the matching link in that prompt's Reel or promotion.
 2. **Reel Cover Hook:** Clean hook text formatted for video overlay
 3. **Instagram Caption:** Pre-written copy directing followers to bio and DMs
 4. **Category Hashtags:** Curated tag lists (e.g. `#AIFashion`, `#MakotoShinkaiStyle`, `#MidjourneyAnime`)
